@@ -1,0 +1,151 @@
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	min-height: 1080px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.accordion {
+	float: left;
+	margin-right: 2rem;
+	width: 20rem;
+	max-width: 360px;
+	margin: auto;
+	background: #fff;
+	border: 1px solid gray;
+	border-radius: 4px;
+}
+
+#accordion-wrap{
+	margin: 1.5rem;
+}
+
+.accordion .menu {
+	position: relative;
+	padding: 15px;
+	color: #4d4d4d;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+	transition: all 0.4s ease;
+}
+
+.accordion li:last-child .menu {
+	border-bottom: 0;
+}
+
+.accordion li i {
+	position: absolute;
+	top: 1.2rem;
+	left: 1rem;
+	color: #595959;
+	transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+	right: 1rem;
+	left: auto;
+}
+
+.accordion li.active i.fa-chevron-down {
+	transition: rotate(180deg);
+}
+
+a.accordion li.active i {
+	color: #b63b3d;
+}
+
+.submenu {
+	height: 0;
+	overflow: hidden;
+	background: #444359;
+	font-size: 14px;
+	transition: height 0.4s ease;
+}
+
+.submenu li {
+	border-bottom: 1px solid #4b4a5e;
+}
+
+.accordion li:last-child .submenu {
+	border-radius: 0 0 4px 4px;
+}
+
+a.accordion li:last-child .submenu li:last-child {
+	border-bottom: 0;
+}
+
+.submenu a {
+	display: block;
+	text-decoration: none;
+	color: #d9d9d9;
+	padding: 12px;
+	padding-left: 42px;
+	transition: all 0.25s ease-in-out;
+}
+
+.submenu a:hover {
+	background: #b63b4d;
+	color: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#logout {
+  cursor: pointer;
+}
+
+.navbar.navbar-default.navbar-absolute-top {
+  border-radius: 0px;
+}
+
+#commonForm {
+  position: absolute;
+  float: right;
+}
+
+.menu_list {
+  width: 200px;
+}
+
+.menu_category {
+  position: relative;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  background: darkgray;
+  color: lightgray;
+}
+
+.menu_body {
+  display: none;
+  text-align: left;
+}
+
+.menu_body a {
+  display: block;
+  display: black;
+  color: black;
+  background: lightgray;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.menu_body a:hover {
+  color: steelblue;
+  text-decoration: underline;
+}

@@ -1,0 +1,17 @@
+## 프로젝트 구조
+
+pj : BoardFramework
+
+  - web
+    - css, img, js
+    - doc : 각종 문서(참고 문서)
+    - common : public.js (공통으로 쓰는 파일)
+    - admin : 게시판 관리자
+      - boardmenu.jsp
+    - album : 사진 게시판
+    - bbs : 자료실
+    - board : 공지사항, 한줄게시판, 일반게시판
+    - reboard : 답변게시판
+
+    - index.jsp : 
+
