@@ -43,6 +43,48 @@ button, .btn1{
 .btn2 {
   cursor: pointer;
 }
+
+#modal-body{
+    display: none;
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background:rgba(0, 0, 0, 0.6)
+
+}
+#modal-wrapper {
+    position: fixed;
+    background: white;
+    padding: 2em;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 20%;
+    height: 18%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#modal-body button {
+  margin-top: 2rem;
+}
+
+#modal-content{
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+#modal-content>div{
+font-size: 1.5rem;
+font-weight: bold;
+    }
 </style>
 <c:if test="${article eq null}">
 <script>
@@ -155,6 +197,15 @@ alert('잘못된 접근');
 		<tbody id="memoview"></tbody>
 	</table>
 </section>
+  <div id="modal-body">
+     <div id="modal-wrapper">
+         <div id="modal-content">
+          <div>삭제하시겠습니까?</div>
+          <button type="button" class="btn btn-primary" id="submit">확인</button>
+          <button type="button" class="btn btn-primary" id="cancel">취소</button>
+         </div>
+     </div>
+  </div>
 </c:if>
 <%@ include file="../include/footer.jsp"%>
 <script src="/js/reboard/view.js" defer="defer"></script>

@@ -40,6 +40,29 @@
         phone = #{phone}, zipcode = #{zipcode}, address = #{address}
     WHERE mno = #{mno}
   </update>
-
+  
+  
+  <select id="getMemberList" parameterType="cri" resultType="memberDto">
+    SELECT *
+    FROM (SELECT rownum rn, mno, mid, mname, birthday, gender, phone, zipcode, address,
+                 to_char(regdate, 'yy/mm/dd hh24:mi:ss') regdate
+          FROM board_member
+          <include refid="search"/>
+    <![CDATA[
+     ORDER BY mno) a
+     WHERE rn >= ((#{page}-1)*10)+1 and rn <= #{page} * 10
+    ]]>
+  </select>
+  
+  <select id="getTotalCount" parameterType="cri" resultType="int">
+    SELECT COUNT(*) 
+    FROM board_member
+    <include refid="search"></include>
+  </select>
+  
+  <sql id="search">
+   WHERE  mid LIKE '%'|| #{keyword} ||'%'
+   OR mname like '%'|| #{keyword} ||'%'
+  </sql>
   
   </mapper>

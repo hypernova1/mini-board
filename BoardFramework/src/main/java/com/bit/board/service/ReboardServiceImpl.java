@@ -1,11 +1,14 @@
 package com.bit.board.service;
 
+import java.io.SequenceInputStream;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.bit.board.dao.BoardDao;
+import com.bit.board.dao.MemoDao;
 import com.bit.board.dao.ReboardDao;
 import com.bit.board.model.ReboardDto;
 import com.bit.common.dao.CommonDao;
@@ -75,8 +78,10 @@ public class ReboardServiceImpl implements ReboardService {
   }
 
   @Override
+  @Transactional
   public int deleteArticle(int rseq) {
-    return sqlSession.getMapper(ReboardDao.class).deleteArticle(rseq);
+    
+    return 0;
   }
 
 }

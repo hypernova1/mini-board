@@ -25,5 +25,10 @@
     DELETE memo
     WHERE mseq = #{mseq}
   </delete>
+  
+  <delete id="deleteBySeq" parameterType="int">
+    DELETE memo
+    WHERE seq = #{seq}
+  </delete>
 
 </mapper>

@@ -28,7 +28,13 @@ $('.modifyBtn').click(function(){
 })
 
 $('.deleteBtn').click(function(){
-  $('#commonForm').attr('method', 'post').attr('action', deletepath).submit();
+  $('#modal-body').css('display', 'block');
+  $('#submit').click(function(){
+      $('#commonForm').attr('method', 'post').attr('action', deletepath).submit();
+  })
+  $('#cancel').click(function(){
+      $('#modal-body').css('display', 'none');
+  })
 })
 
 

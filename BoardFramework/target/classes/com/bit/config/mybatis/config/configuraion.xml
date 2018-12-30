@@ -12,5 +12,6 @@
 	  <typeAlias alias="reboardDto" type="com.bit.board.model.ReboardDto" />
 	  <typeAlias alias="memoDto" type="com.bit.board.model.MemoDto" />
 	  <typeAlias alias="memberDto" type="com.bit.board.model.MemberDto" />
+	  <typeAlias alias="cri" type="com.bit.util.Criteria" />
   </typeAliases>
 </configuration>

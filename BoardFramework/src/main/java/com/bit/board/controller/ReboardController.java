@@ -2,15 +2,12 @@ package com.bit.board.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import javax.management.modelmbean.ModelMBean;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -102,8 +99,8 @@ public class ReboardController {
   }
   
   @PostMapping("delete")
-  public String delete(@RequestParam HashMap<String, Object> param, Model model) {
-    reboardService.deleteArticle((int) param.get("seq"));
+  public String delete(@RequestParam HashMap<String, String> param, Model model) {
+    reboardService.deleteArticle(Integer.parseInt(param.get("seq")));
     
     return null;
     
@@ -121,21 +118,12 @@ public class ReboardController {
   @PostMapping("reply")
   public String reply(HashMap<String, Object> param, ReboardDto reboardDto, HttpSession session,
       Model model) {
-    Integer mno = (Integer) session.getAttribute("mno");
-    if (mno != null) {
-      // reboardDto.setId(memberDto.getId());
-      // reboardDto.setName(memberDto.getName());
-      // reboardDto.setEmail(memberDto.getEmail());
-      int seq = reboardService.replyArticle(reboardDto);
+    int seq = reboardService.replyArticle(reboardDto);
 
-      if (seq != 0) {
-        model.addAttribute("wseq", seq);
-      } else {
-        model.addAttribute("errorMsg", "글 작성 실패");
-      }
+    if (seq != 0) {
+      model.addAttribute("wseq", seq);
     } else {
-      model.addAttribute("errorMsg", "회원 전용 게시판이다. 로그인 해라.");
-
+      model.addAttribute("errorMsg", "글 작성 실패");
     }
 
     return "reboard/writeOk";

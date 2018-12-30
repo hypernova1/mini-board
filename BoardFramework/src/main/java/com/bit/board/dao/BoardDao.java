@@ -1,5 +1,5 @@
 package com.bit.board.dao;
 
-public class BoardDao {
-
+public interface BoardDao {
+  int deleteArticle(int seq);
 }

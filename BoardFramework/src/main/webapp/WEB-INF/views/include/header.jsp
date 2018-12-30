@@ -16,10 +16,10 @@
 <link rel="stylesheet" href="${root}/css/skin_purple.css" type="text/css">
 <link rel="stylesheet" href="/css/header.css">
 </head>
-	<script src="/js/jquery-2.1.0.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/bootswatch.js"></script>
-	<script src="/js/board.js" defer="defer"></script>
+<script src="/js/jquery-2.1.0.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootswatch.js"></script>
+<script src="/js/board.js" defer="defer"></script>
 <body>
   <input type="hidden" id="mno" value="${sessionScope.mno}">
   <input type="hidden" id="mid" value="${sessionScope.mid}">
@@ -43,20 +43,9 @@
 			<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
 						<c:if test="${member.mid eq 'admin'}">
-							<li class="active"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">회원관리</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">회원등록</a></li>
-									<li><a href="#">회원목록</a></li>
-								</ul></li>
-							<li><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">미디어관리</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">미디어등록</a></li>
-									<li><a href="#">미디어목록</a></li>
-								</ul></li>
-							<li><a href="#">대출관리</a></li>
-							<li><a href="#">공지사항</a></li>
+							<li class="active">
+							  <a href="/manage">회원관리</a>
+							</li>
 						</c:if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -72,5 +61,5 @@
 		</div>
 	</div>
   <div id="accordion-wrap">
-	 <ul id="accordion" class="accordion"></ul>
+	  <ul id="accordion" class="accordion"></ul>
   </div>

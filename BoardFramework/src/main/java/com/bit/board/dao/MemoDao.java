@@ -8,4 +8,5 @@ public interface MemoDao {
   List<MemoDto> listMemo(int seq);
   int modifyMemo(MemoDto memoDto);
   int deleteMemo(int mseq);
+  int deleteBySeq(int seq);
 }
