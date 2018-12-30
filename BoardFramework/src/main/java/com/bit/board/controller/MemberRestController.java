@@ -42,7 +42,7 @@ public class MemberRestController {
       
       Map<String, Object> map = new HashMap<String, Object>();
       
-      List<MemberDto> list = memberService.getMemberList(paramMap, cri);  
+      List<MemberDto> list = memberService.getMemberList(cri);  
       map.put("list", list);
       
       int totalCount = memberService.getTotalCount(searchKeyword);
