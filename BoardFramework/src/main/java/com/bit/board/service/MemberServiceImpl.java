@@ -30,7 +30,7 @@ public class MemberServiceImpl implements MemberService {
 
   @Override
   public void modifyMember(MemberDto memberDto) {
-    sqlSession.getMapper(MemberDao.class).updateMember(memberDto);
+    System.out.println(sqlSession.getMapper(MemberDao.class).updateMember(memberDto));
   }
 
   @Override

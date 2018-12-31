@@ -41,7 +41,6 @@
     WHERE mno = #{mno}
   </update>
   
-  
   <select id="getMemberList" parameterType="cri" resultType="memberDto">
     SELECT *
     FROM (SELECT rownum rn, mno, mid, mname, birthday, gender, phone, zipcode, address,

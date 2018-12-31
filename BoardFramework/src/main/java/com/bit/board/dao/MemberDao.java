@@ -10,7 +10,7 @@ public interface MemberDao {
 	int getMemberNo(String mid);
 	MemberDto getMemberInfo(int mno);
 	void joinMember(MemberDto memberDto);
-	void updateMember(MemberDto memberDto);
+	int updateMember(MemberDto memberDto);
 	void deleteMember(int mid);
 	int login(MemberDto memberDto);
 	int idCheck(String mid);

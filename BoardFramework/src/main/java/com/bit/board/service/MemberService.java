@@ -7,8 +7,8 @@ import com.bit.util.Criteria;
 public interface MemberService {
 	
 	List<MemberDto> getMemberList(Criteria cri);
-	void joinMember(MemberDto board_MemberDto);
-	void modifyMember(MemberDto board_MemberDto);
+	void joinMember(MemberDto memberDto);
+	void modifyMember(MemberDto memberDto);
 	void deleteMember(int mid);
 	Integer login(MemberDto memberDto);
 	int idCheck(String mid);

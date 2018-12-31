@@ -57,15 +57,4 @@ public class LoginController {
     
     return new ResponseEntity<>(true, HttpStatus.OK);
   }
-  
-  @PutMapping("modify")
-  public ResponseEntity<Boolean> modify(@RequestBody MemberDto memberDto, HttpSession session){
-    int mno = (int) session.getAttribute("loginUser");
-    
-    memberDto.setMno(mno);
-    memberService.modifyMember(memberDto);
-    
-    return new ResponseEntity<>(true, HttpStatus.OK);
-  }
-  
 }

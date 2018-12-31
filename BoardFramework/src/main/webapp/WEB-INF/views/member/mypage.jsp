@@ -66,8 +66,8 @@
 					<!--button class="btn btn-success">수정</button-->
 					<a href="/modify" class="btn btn-success btn-default">수정</a>
 					<c:if test="${member.mid eq 'admin'}">
-					<a href="#" class="btn btn-large btn-default">삭제</a>
-  					<a href="./list.html" class="btn btn-large btn-default">목록</a>
+					<!-- <a href="#" class="btn btn-large btn-default">삭제</a> -->
+  					<a href="/manage" class="btn btn-large btn-default">목록</a>
 					</c:if>
 				</div>
 
