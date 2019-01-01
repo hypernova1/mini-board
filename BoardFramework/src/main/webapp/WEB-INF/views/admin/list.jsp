@@ -54,6 +54,7 @@
 		</div>
 	</div>
 </div>
+${pm}
 
 <%@ include file="../include/footer.jsp"%>
 

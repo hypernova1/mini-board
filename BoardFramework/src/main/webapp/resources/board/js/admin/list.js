@@ -8,7 +8,7 @@ function getMemberList(keyword, page) {
     var listPage = "1";
   }
 
-  if (!searchKeyword) {
+  if (!searchKeyword || searchKeyword== "") {
     searchKeyword = 'none/';
   } else{
     searchKeyword = searchKeyword + "/";
@@ -52,7 +52,7 @@ function memberListPaging(pm) {
     }
   }
   if (pm.next) {
-    str += "<li><a href = '" + (pm.endpage + 1) + "'> >> </a></li>";
+    str += "<li><a href = '" + (pm.endPage + 1) + "'> >> </a></li>";
   }
    $('.pagination').html(str);
 };
@@ -61,9 +61,9 @@ $(".pagination").on("click", "li a", function (e) {
     e.preventDefault();
     var searchKeyword = $("#searchKeyword").val();
     if (!searchKeyword) {
-      searchKeyword = 'none/';
+      searchKeyword = 'none';
     }
-    var page = $(e.target).text(); // page number
+    var page = $(e.target).attr("href"); // page number
     getMemberList(searchKeyword, page);
 });
 
