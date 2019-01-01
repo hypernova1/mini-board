@@ -4,6 +4,7 @@ public class Criteria {
 
   private int page;
   private int perPageNum;
+  private String searchKeyword;
 
   public Criteria() {
     this.page = 1;
@@ -33,4 +34,15 @@ public class Criteria {
   public int getPerPageNum() {
     return perPageNum;
   }
+
+  public String getSearchKeyword() {
+	return searchKeyword;
+  }
+
+  public void setSearchKeyword(String searchKeyword) {
+	this.searchKeyword = searchKeyword;
+  }
+  
+  
+  
 }

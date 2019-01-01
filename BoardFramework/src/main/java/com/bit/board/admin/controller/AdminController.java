@@ -42,26 +42,20 @@ public class AdminController {
   @GetMapping("/manage/{searchKeyword}/{page}")
   public @ResponseBody ResponseEntity<Map<String, Object>> memberList(
       @PathVariable String searchKeyword,  @PathVariable("page") int page) {
-    int totalCount = memberService.getTotalCount(searchKeyword);
     PageMaker pm = new PageMaker();
     Criteria cri = new Criteria();
     cri.setPage(page);
+    cri.setSearchKeyword(searchKeyword);
+    
+    int totalCount = memberService.getTotalCount(cri);
     
     pm.setCri(cri);
     pm.setTotal(totalCount);
-    Map<String, String> param = new HashMap<>();
     
-    param.put("page", String.valueOf(cri.getPage()));
-    param.put("keyword", searchKeyword);
-    
-    List<MemberDto> list = memberService.getMemberList(param);
+    List<MemberDto> list = memberService.getMemberList(cri);
     
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("list", list);
-
-    
-
-    
 
     map.put("pm", pm);
 

@@ -1,13 +1,15 @@
 package com.bit.board.service;
 
 import java.util.List;
-import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import com.bit.board.dao.MemberDao;
 import com.bit.board.model.MemberDto;
+import com.bit.util.Criteria;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -18,8 +20,8 @@ public class MemberServiceImpl implements MemberService {
   private BCryptPasswordEncoder bcryptPasswordEncoder;
 
   @Override
-  public List<MemberDto> getMemberList(Map<String, String> param) {
-    return sqlSession.getMapper(MemberDao.class).getMemberList(param);
+  public List<MemberDto> getMemberList(Criteria cri) {
+    return sqlSession.getMapper(MemberDao.class).getMemberList(cri);
   }
 
   @Override
@@ -69,8 +71,8 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public int getTotalCount(String keyword) {
-      return sqlSession.getMapper(MemberDao.class).getTotalCount(keyword);
+  public int getTotalCount(Criteria cri) {
+      return sqlSession.getMapper(MemberDao.class).getTotalCount(cri);
   }
   
 

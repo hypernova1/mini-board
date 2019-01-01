@@ -60,8 +60,10 @@
   </select>
   
   <sql id="search">
-	   WHERE  mid LIKE '%'|| #{keyword} ||'%'
-     OR mname like '%'|| #{keyword} ||'%'
+	  <if test="!searchKeyword.equals('none')">
+		 WHERE  mid LIKE '%'|| #{searchKeyword} ||'%'
+	     OR mname like '%'|| #{searchKeyword} ||'%'
+	  </if>
   </sql>
   
   </mapper>
