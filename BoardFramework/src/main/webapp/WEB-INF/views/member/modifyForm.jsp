@@ -138,9 +138,6 @@ input{
             
             <div class="pull-right">
                 <button type="button" class="btn btn-success btn-default">저장</button>
-                <c:if test="${member.mid eq 'admin'}">
-                  <a href="./list.html" class="btn btn-large btn-default">목록</a>
-                </c:if>
             </div>
 
         </div>

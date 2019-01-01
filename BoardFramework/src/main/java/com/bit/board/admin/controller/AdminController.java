@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.bit.board.admin.model.BoardListDto;
 import com.bit.board.admin.service.BoardAdminService;
@@ -43,24 +42,29 @@ public class AdminController {
   @GetMapping("/manage/{searchKeyword}/{page}")
   public @ResponseBody ResponseEntity<Map<String, Object>> memberList(
       @PathVariable String searchKeyword,  @PathVariable("page") int page) {
-    
+    int totalCount = memberService.getTotalCount(searchKeyword);
     PageMaker pm = new PageMaker();
     Criteria cri = new Criteria();
     cri.setPage(page);
-    cri.setSearchKeyword(searchKeyword);
-    pm.setCri(cri);
     
-    List<MemberDto> list = memberService.getMemberList(cri);
+    pm.setCri(cri);
+    pm.setTotal(totalCount);
+    Map<String, String> param = new HashMap<>();
+    
+    param.put("page", String.valueOf(cri.getPage()));
+    param.put("keyword", searchKeyword);
+    
+    List<MemberDto> list = memberService.getMemberList(param);
     
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("list", list);
 
-    int totalCount = memberService.getTotalCount(searchKeyword);
+    
 
-    pm.setTotal(totalCount);
+    
 
     map.put("pm", pm);
 
-    return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+    return new ResponseEntity<>(map, HttpStatus.OK);
   }
 }

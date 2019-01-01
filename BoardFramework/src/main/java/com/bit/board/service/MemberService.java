@@ -1,12 +1,12 @@
 package com.bit.board.service;
 
 import java.util.List;
+import java.util.Map;
 import com.bit.board.model.MemberDto;
-import com.bit.util.Criteria;
 
 public interface MemberService {
 	
-	List<MemberDto> getMemberList(Criteria cri);
+	List<MemberDto> getMemberList(Map<String, String> param);
 	void joinMember(MemberDto memberDto);
 	void modifyMember(MemberDto memberDto);
 	void deleteMember(int mid);

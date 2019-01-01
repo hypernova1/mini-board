@@ -23,7 +23,7 @@
   </update>
   <delete id="deleteMemo" parameterType="int">
     DELETE memo
-    WHERE mseq = #{mseq}
+    WHERE seq = #{seq}
   </delete>
   
   <delete id="deleteBySeq" parameterType="int">

@@ -102,7 +102,13 @@ public class ReboardController {
   public String delete(@RequestParam HashMap<String, String> param, Model model) {
     reboardService.deleteArticle(Integer.parseInt(param.get("seq")));
     
-    return null;
+    model.addAttribute("seq", param.get("seq"));
+    model.addAttribute("bcode", param.get("bcode"));
+    model.addAttribute("page", param.get("page"));
+    model.addAttribute("key", param.get("key"));
+    model.addAttribute("word", param.get("word"));
+    
+    return "redirect:list";
     
   }
 

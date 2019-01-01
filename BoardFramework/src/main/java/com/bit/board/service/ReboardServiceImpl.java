@@ -1,6 +1,5 @@
 package com.bit.board.service;
 
-import java.io.SequenceInputStream;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
@@ -80,8 +79,11 @@ public class ReboardServiceImpl implements ReboardService {
   @Override
   @Transactional
   public int deleteArticle(int rseq) {
+    sqlSession.getMapper(MemoDao.class).deleteBySeq(rseq);
+    sqlSession.getMapper(ReboardDao.class).deleteArticle(rseq);
+    int result = sqlSession.getMapper(BoardDao.class).deleteArticle(rseq);
     
-    return 0;
+    return result;
   }
 
 }

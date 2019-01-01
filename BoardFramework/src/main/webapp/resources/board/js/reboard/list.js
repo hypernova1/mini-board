@@ -29,10 +29,10 @@ $('#searchBtn').click(function(){
     $('#commonForm').attr('method', 'get').attr('action', listpath).submit();
 });
 
-$('.myBtn').click(function(){
-     alert(encodeURI('aaa')); // 자바스크립트로 데이터를 보낼 때는 인코딩을 해서 넘겨야함(빌어먹을 IE)
+/*$('#myBtn').click(function(){
+     //alert(encodeURI('aaa')); // 자바스크립트로 데이터를 보낼 때는 인코딩을 해서 넘겨야함(빌어먹을 IE)
       $('#page').val("1");
       $('#key').val($("id"));
       $('#word').val($('#mno').val());
     $('#commonForm').attr('method', 'get').attr('action', listpath).submit();
-});
+});*/

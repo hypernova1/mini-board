@@ -23,6 +23,9 @@ table{
   background: #f5f6fa;
   transition: all 0.5s;
 }
+.writeBtn{
+  cursor:pointer;
+}
 </style>
 
 
@@ -131,7 +134,7 @@ table{
 		</tr>
 	</table>
 	
-	<table cellpadding="0" cellspacing="0" border="0">
+	<table>
 		<tr>
 			<td colspan="3" height="10"></td>
 		</tr>
@@ -146,14 +149,11 @@ table{
 				<span>
 				  <input type="text" id="sword" name="word" size="22" class="inp" style="margin-top: -19px;">
 				</span>
-				<img src="${root}/img/board/sbtn_s.gif" width="32" height="18" border="0" align="absmiddle" alt="검색" id="searchBtn">
-				<c:if test="${mno ne null}">
-					<img src="${root}/img/board/sbtn_mytext.gif" width="82" height="20" align="absmiddle" alt="내가 쓴 글 보기" id="myBtn">
-				</c:if>
+				<img src="/img/board/sbtn_s.gif" width="32" height="18" border="0" align="absmiddle" alt="검색" id="searchBtn">
 			</td>
 			<td width="50%" align="right">
 			  <a href="#">
-			    <img src="${root}/img/board/sbtn_top.gif" width="24" height="11" align="absmiddle" alt="TOP">
+			    <img src="/img/board/sbtn_top.gif" width="24" height="11" align="absmiddle" alt="TOP">
 			  </a>
 			  <br>
 			</td>

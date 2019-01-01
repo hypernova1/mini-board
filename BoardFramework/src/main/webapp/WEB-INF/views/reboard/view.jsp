@@ -3,8 +3,8 @@
 <%@ include file="../include/header.jsp"%>
 <style>
 section {
-width: 75%;
-margin-right: 10%;
+width: 85%;
+margin-right: 3%;
 float:right;
 }
 

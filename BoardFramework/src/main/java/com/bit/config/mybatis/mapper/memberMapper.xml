@@ -41,7 +41,7 @@
     WHERE mno = #{mno}
   </update>
   
-  <select id="getMemberList" parameterType="cri" resultType="memberDto">
+  <select id="getMemberList" resultType="memberDto">
     SELECT *
     FROM (SELECT rownum rn, mno, mid, mname, birthday, gender, phone, zipcode, address,
                  to_char(regdate, 'yy/mm/dd hh24:mi:ss') regdate
@@ -53,15 +53,15 @@
     ]]>
   </select>
   
-  <select id="getTotalCount" parameterType="cri" resultType="int">
+  <select id="getTotalCount" resultType="int">
     SELECT COUNT(*) 
     FROM board_member
-    <include refid="search"></include>
+    <include refid="search" />
   </select>
   
   <sql id="search">
-   WHERE  mid LIKE '%'|| #{keyword} ||'%'
-   OR mname like '%'|| #{keyword} ||'%'
+	   WHERE  mid LIKE '%'|| #{keyword} ||'%'
+     OR mname like '%'|| #{keyword} ||'%'
   </sql>
   
   </mapper>

@@ -58,7 +58,7 @@
 	</update>
 	<delete id="deleteArticle" parameterType="int">
 	 DELETE FROM reboard
-	 WHERE rseq = #{seq}
+	 WHERE seq = #{seq}
 	</delete>
 	
 	<update id="updateStep" parameterType="reboardDto">
