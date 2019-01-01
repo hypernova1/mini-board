@@ -9,7 +9,7 @@ function getMemberList(keyword, page) {
   }
 
   if (!searchKeyword) {
-    searchKeyword = '';
+    searchKeyword = 'none/';
   } else{
     searchKeyword = searchKeyword + "/";
   }
@@ -38,6 +38,7 @@ function getMemberList(keyword, page) {
   });
 }
 
+/* memberList 페이징 */
 function memberListPaging(pm) {
   var str = "";
   if (pm.prev) {
@@ -56,12 +57,11 @@ function memberListPaging(pm) {
    $('.pagination').html(str);
 };
 
-/* memberList 페이징 */
 $(".pagination").on("click", "li a", function (e) {
     e.preventDefault();
     var searchKeyword = $("#searchKeyword").val();
-    if (typeof searchKeyword == "undefined" || searchKeyword == "") {
-      searchKeyword = '';
+    if (!searchKeyword) {
+      searchKeyword = 'none/';
     }
     var page = $(e.target).text(); // page number
     getMemberList(searchKeyword, page);
@@ -70,18 +70,7 @@ $(".pagination").on("click", "li a", function (e) {
 $("#memberSearchBtn").click(function () {
   var searchKeyword = $("#searchKeyword").val();
   if (!searchKeyword) {
-    searchKeyword = "none";
+    searchKeyword = "";
   }
   getMemberList(searchKeyword);
-});
-
-/* memberList 페이징 */
-$(".pagination").on("click", "li a", function (e) {
-    e.preventDefault();
-    var searchKeyword = $("#searchKeyword").val();
-    if (typeof searchKeyword == "undefined" || searchKeyword == "") {
-      searchKeyword = '';
-    }
-    var page = $(e.target).text(); // page number
-    getMemberList(searchKeyword, page);
 });

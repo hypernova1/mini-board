@@ -38,12 +38,8 @@
 								</tr>
 							</thead>
 							<tbody class="memberList">
-
-
 							</tbody>
-
 						</table>
-
 						<div class="row">
 							<div class="col-lg-12 text-center">
 								<ul class="pagination">
@@ -59,7 +55,6 @@
 	</div>
 </div>
 
-<!-- Footer ========================================================================================== -->
 <%@ include file="../include/footer.jsp"%>
 
 

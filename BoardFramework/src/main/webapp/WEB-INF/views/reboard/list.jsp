@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="../include/header.jsp" %>
+
 <style>
 section {
   padding-right: 1.5rem;
@@ -13,15 +13,26 @@ section {
 table{
   width: 100%;
 }
+.posting td{
+  height: 30px;
+}
+.posting{
+  cursor: pointer;
+}
+.posting:hover{
+  background: #f5f6fa;
+  transition: all 0.5s;
+}
 </style>
 
 
+<%@ include file="../include/header.jsp" %>
 <!-- title start -->
 <section>
-	<table cellpadding="0" cellspacing="0" border="0">
+	<table>
 		<tr>
 			<td>
-			  <img src="${root}/img/board/m_icon_board.gif" width="9" 
+			  <img src="/img/board/m_icon_board.gif" width="9" 
 			   height="9" border="0" align="absmiddle" style="margin-top: -2px">
 				<b>자유게시판</b> &nbsp;
 				<font style="font-size: 8pt">|</font>&nbsp; 자유로운 글을 올리는 공간입니다 <br>
@@ -52,41 +63,39 @@ table{
 	</table>
 
 	<form name="listForm" method="post" style="margin: 0px">
-		<table cellpadding="5" cellspacing="0" border="0">
+		<table>
 			<tr>
 				<td class="bg_board_title_02" height="2" colspan="11" style="overflow: hidden; padding: 0px"></td>
 			</tr>
 			<tr class="bg_board_title" align="center" height="28">
-				<td nowrap><b>번호</b></td>
+				<th nowrap style="text-align:center;">번호</th>
 				<td nowrap class="board_bar" style="padding: 0px">|</td>
-				<td></td>
-				<td><b>제목</b></td>
+				<th nowrap style="text-align:center;"colspan="2" width="300px">제목</th>
 				<td nowrap class="board_bar" style="padding: 0px">|</td>
-				<td width="120" nowrap><b>글쓴이</b></td>
+				<th style="text-align:center;"nowrap>글쓴이</th>
 				<td nowrap class="board_bar" style="padding: 0px">|</td>
-				<td nowrap><b>조회</b></td>
+				<th style="text-align:center;"nowrap>조회</th>
 				<td nowrap class="board_bar" style="padding: 0px">|</td>
-				<td width="45" nowrap><b>날짜</b></td>
+				<th style="text-align:center;"nowrap>날짜</th>
 			</tr>
 			<tr>
 				<td class="bg_board_title_02" height="1" colspan="11"
 					style="overflow: hidden; padding: 0px"></td>
 			</tr>
 
-			<!-- 공지기능 적용시 -->
-			<!-- 공지기능 적용끝  -->
 			<c:forEach var="article" items="${articlelist}">
 				<tr class="posting">
 					<td align="center" class="text_gray">${article.seq}</td>
 					<td></td>
-					<td nowrap class="onetext" style="padding-right: 5px"></td>
-					<td style="word-break: break-all;"><img
-						src="${root}/img/board/blank.gif" height="1"
-						width="${article.lev * 10}">
-						${article.subject}&nbsp;&nbsp;&nbsp;</td>
+					<td class="post-title" style="word-break: break-all;">
+					  <img src="/img/board/blank.gif" height="1" width="${article.lev * 10}" style="padding-left: 1.5rem;"> 
+						${article.subject}&nbsp;&nbsp;&nbsp;
+				  </td>
 					<td></td>
-					<td style="word-break: break-all;"><a href="javascript:;"
-						onClick="showSideView();" class="link_board_04">${article.name}</a></td>
+					<td nowrap class="onetext" style="padding-right: 5px"></td>
+					<td style="word-break: break-all;">
+					  <a href="javascript:;" onClick="showSideView();" class="link_board_04">${article.name}</a>
+					</td>
 					<td></td>
 					<td align="center" class="text_gray">${article.hit}</td>
 					<td></td>
@@ -94,8 +103,7 @@ table{
 				</tr>
 
 				<tr>
-					<td bgcolor="#ededed" height="1" colspan="11"
-						style="overflow: hidden; padding: 0px"></td>
+					<td bgcolor="#ededed" height="1" colspan="11" style="overflow: hidden; padding: 0px"></td>
 				</tr>
 			</c:forEach>
 
@@ -123,9 +131,6 @@ table{
 		</tr>
 	</table>
 	
-	<!-- 하단 페이징 -->
-
-	<!-- 검색 영역-->
 	<table cellpadding="0" cellspacing="0" border="0">
 		<tr>
 			<td colspan="3" height="10"></td>

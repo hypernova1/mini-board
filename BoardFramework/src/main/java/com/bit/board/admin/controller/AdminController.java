@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.bit.board.admin.model.BoardListDto;
 import com.bit.board.admin.service.BoardAdminService;
@@ -41,13 +42,12 @@ public class AdminController {
 
   @GetMapping("/manage/{searchKeyword}/{page}")
   public @ResponseBody ResponseEntity<Map<String, Object>> memberList(
-      @PathVariable("searchKeyword") String searchKeyword,
-      @PathVariable("page") int page) {
+      @PathVariable String searchKeyword,  @PathVariable("page") int page) {
     
+    PageMaker pm = new PageMaker();
     Criteria cri = new Criteria();
     cri.setPage(page);
-    cri.setKeyword(searchKeyword);
-    PageMaker pm = new PageMaker();
+    cri.setSearchKeyword(searchKeyword);
     pm.setCri(cri);
     
     List<MemberDto> list = memberService.getMemberList(cri);
