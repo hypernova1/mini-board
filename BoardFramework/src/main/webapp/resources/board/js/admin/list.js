@@ -1,3 +1,13 @@
+function ajax(url, method, obj){
+    return $.ajax({
+      url: url,
+      type: method,
+      contentType: 'application/json;charset=utf-8',
+      dataType: 'json',
+      data: JSON.stringify(obj),
+    });
+}
+
 window.addEventListener('load', getMemberList());
 
 function getMemberList(keyword, page) {
@@ -8,23 +18,29 @@ function getMemberList(keyword, page) {
     var listPage = "1";
   }
 
-  if (!searchKeyword || searchKeyword== "") {
+  if (!searchKeyword) {
     searchKeyword = 'none/';
   } else{
     searchKeyword = searchKeyword + "/";
   }
 
   $.getJSON("/manage/" + searchKeyword + listPage, function (data) {
+	var memberId = $("#logout").attr("data-mid");
     var searchKeyword = $("#searchKeyword").val();
     str = "";
     $(data.list).each(function () {
-      str += "<tr>";
-      str += "  <td class='text-center'>" + this.mno + "</td>";
-      str += "  <td>" + this.mid + "</td>";
-      str += "  <td><a href=''>" + this.mname + "</a></td>";
-      str += "  <td>" + this.phone + "</td>";
-      str += "  <td>" + this.regdate + "</td>";
-      str += "</tr>";
+    	if(memberId != this.mid){    		
+    		str += "<tr>";
+    		str += "  <td class='text-center'>" + this.mno + "</td>";
+    		str += "  <td>" + this.mid + "</td>";
+    		str += "  <td><a href=''>" + this.mname + "</a></td>";
+    		str += "  <td>" + this.phone + "</td>";
+    		str += "  <td>" + this.regdate + "</td>";
+    		str += "  <td id='btn-box'>"
+    		str += "    <button type='button' class='delete-btn'>삭제</button>"
+    		str += "  </td>"
+    		str += "</tr>";
+    	}
     });
 
     if ($(data.list).length == 0) {
@@ -35,6 +51,30 @@ function getMemberList(keyword, page) {
 
     $(".memberList").html(str);
     memberListPaging(data.pm);
+    
+    $('.delete-btn').on('click', function({target}){
+        let mno = $(this).parents('tr').children().first().text();
+        const modal = $('#modal-body')
+        modal.css('display', 'block');
+        $('.pagination>.active').css('z-index', '0');
+        $('#modal-body button').click(function({target}){
+        	
+        	if($(this).attr("id") == 'deleteCancle'){
+        		modal.css('display', 'none');
+        		return false;
+        	}
+        	
+            ajax('manage', 'DELETE', {
+                mno: mno,
+            }).success(function(data){
+                if(data){
+                    modal.css('display', 'none');
+                    getMemberList(keyword, page);
+                }
+            });
+        })
+        
+    })
   });
 }
 
@@ -52,7 +92,7 @@ function memberListPaging(pm) {
     }
   }
   if (pm.next) {
-    str += "<li><a href = '" + (pm.endPage + 1) + "'> >> </a></li>";
+    str += "<li><a href = '" + (pm.endpage + 1) + "'> >> </a></li>";
   }
    $('.pagination').html(str);
 };
@@ -61,9 +101,9 @@ $(".pagination").on("click", "li a", function (e) {
     e.preventDefault();
     var searchKeyword = $("#searchKeyword").val();
     if (!searchKeyword) {
-      searchKeyword = 'none';
+      searchKeyword = 'none/';
     }
-    var page = $(e.target).attr("href"); // page number
+    var page = $(e.target).text(); // page number
     getMemberList(searchKeyword, page);
 });
 

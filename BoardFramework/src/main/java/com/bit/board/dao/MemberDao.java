@@ -1,7 +1,6 @@
 package com.bit.board.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import com.bit.board.model.MemberDto;
 import com.bit.util.Criteria;
@@ -13,7 +12,7 @@ public interface MemberDao {
 	MemberDto getMemberInfo(int mno);
 	void joinMember(MemberDto memberDto);
 	int updateMember(MemberDto memberDto);
-	void deleteMember(int mid);
+	void deleteMember(int mno);
 	int login(MemberDto memberDto);
 	int idCheck(String mid);
 	String getPassword(String mid);

@@ -49,7 +49,7 @@
 						</c:if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a id="logout">로그아웃 (${sessionScope.mid})</a></li>
+					<li><a id="logout" data-mid="${sessionScope.mid}">로그아웃 (${sessionScope.mid})</a></li>
 					<li class="dropdown">
 						<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">설정 <b class="caret"></b></a> -->
 						<ul class="dropdown-menu">

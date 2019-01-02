@@ -66,6 +66,9 @@
 	  </if>
   </sql>
   
-  
+  <delete id="deleteMember">
+	delete from board_member
+	where mno = #{mno}
+  </delete>
   
   </mapper>

@@ -36,8 +36,8 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public void deleteMember(int mid) {
-    // TODO Auto-generated method stub
+  public void deleteMember(int mno) {
+    sqlSession.getMapper(MemberDao.class).deleteMember(mno);
   }
 
   @Override
